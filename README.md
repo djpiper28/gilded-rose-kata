@@ -56,3 +56,4 @@ If your programming language doesn't have an easy way to add a command-line inte
 ## Programming Languages Completed In
 
  - [x] Go
+ - [x] Java
