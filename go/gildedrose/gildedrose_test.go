@@ -20,7 +20,7 @@ func Test_Foo(t *testing.T) {
 // Once the sell by date has passed, Quality degrades twice as fast
 func Test_SellByDatePassed(t *testing.T) {
 	const Q = 4
-	var items = []*gildedrose.Item{
+	items := []*gildedrose.Item{
 		{Name: "Out of date item",
 			SellIn:  0,
 			Quality: Q},
@@ -32,7 +32,7 @@ func Test_SellByDatePassed(t *testing.T) {
 }
 
 // The Quality of an item is never negative
-func Test_NegativeQualityRemovedOnTick(t *testing.T) {
+func Test_NegativeQualityOnTick(t *testing.T) {
 	items := []*gildedrose.Item{
 		{Name: "Really rotten tomatoes",
 			SellIn:  4,
@@ -41,6 +41,17 @@ func Test_NegativeQualityRemovedOnTick(t *testing.T) {
 
 	gildedrose.UpdateQuality(items)
 	assert.Equal(t, 0, items[0].Quality, "Items with zero quality should not tick down to negative values")
+}
+
+func Test_NegativeQualityOnDoubleTick(t *testing.T) {
+	items := []*gildedrose.Item{
+		{Name: "Out of date item",
+			SellIn:  0,
+			Quality: 0},
+	}
+
+	gildedrose.UpdateQuality(items)
+	assert.Equal(t, 0, items[0].Quality, "Items with zero quality and no sell by date should still not tick down to negative values")
 }
 
 // "Aged Brie" actually increases in Quality the older it gets
