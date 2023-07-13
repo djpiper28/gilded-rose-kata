@@ -5,9 +5,7 @@ func (item *Item) updateBrieQualityPostSellInDec() {
 		return
 	}
 
-	if item.Quality < 50 {
-		item.Quality++
-	}
+	item.incQuality()
 }
 
 func (item *Item) updateItemQualityPostSellInDec() {
@@ -19,7 +17,7 @@ func (item *Item) updateItemQualityPostSellInDec() {
 		item.updateBrieQualityPostSellInDec()
 	} else if item.Name == BACKSTAGE_PASS {
 		item.Quality = 0
-	} else if item.Quality > 0 {
-		item.Quality--
+	} else {
+		item.decQuality()
 	}
 }

@@ -7,16 +7,12 @@ func (item *Item) updateBackStagePassQualityPreSellInDec() {
 		return
 	}
 
-	if item.Quality >= 50 {
-		return
-	}
-
 	if item.SellIn <= 10 {
-		item.Quality++
+		item.incQuality()
 	}
 
 	if item.SellIn <= 5 {
-		item.Quality++
+		item.incQuality()
 	}
 }
 
@@ -25,13 +21,9 @@ func (item *Item) updateStandardItemQualityPreSellInDec() {
 		return
 	}
 
-	if item.Quality <= 0 {
-		return
-	}
-
-	item.Quality--
-	if strings.Contains(item.Name, CONJURED_PREFIX) && item.Quality > 0 {
-		item.Quality--
+	item.decQuality()
+	if strings.Contains(item.Name, CONJURED_PREFIX) {
+		item.decQuality()
 	}
 }
 
@@ -42,7 +34,7 @@ func (item *Item) updateItemQualityPreSellInDec() {
 
 	if item.Name != AGED_BRIE && item.Name != BACKSTAGE_PASS {
 		item.updateStandardItemQualityPreSellInDec()
-	} else if item.Quality < 50 {
-		item.Quality++
+	} else {
+		item.incQuality()
 	}
 }
