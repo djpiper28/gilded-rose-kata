@@ -43,6 +43,10 @@ class GildedRose {
 
         items[i].sellIn = items[i].sellIn - 1;
 
+        updateitemsPostSellInDecrement(i);
+    }
+
+    private void updateitemsPostSellInDecrement(int i) {
         if (items[i].sellIn < 0) {
             if (items[i].name.equals("Aged Brie")) {
                 if (items[i].quality < 50) {
