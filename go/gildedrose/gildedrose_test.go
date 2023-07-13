@@ -55,8 +55,28 @@ func Test_NegativeQualityOnDoubleTick(t *testing.T) {
 }
 
 // "Aged Brie" actually increases in Quality the older it gets
+func Test_BrieQualityGetsOlder(t *testing.T) {
+	items := []*gildedrose.Item{
+		{Name: "Aged Brie",
+			SellIn:  0,
+			Quality: 0},
+	}
+
+	gildedrose.UpdateQuality(items)
+	assert.Equal(t, 2, items[0].Quality, "Aged Brie should get better as it gets older")
+}
 
 // The Quality of an item is never more than 50
+func Test_BrieQualityCapsOutAt50(t *testing.T) {
+	items := []*gildedrose.Item{
+		{Name: "Aged Brie",
+			SellIn:  0,
+			Quality: 50},
+	}
+
+	gildedrose.UpdateQuality(items)
+	assert.Equal(t, 50, items[0].Quality, "Aged Brie should get better as it gets older until it has 50 quality")
+}
 
 // "Sulfuras", being a legendary item, never has to be sold or decreases in Quality
 
