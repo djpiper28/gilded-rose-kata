@@ -1,4 +1,6 @@
-package com.gildedrose;
+package com.gildedrose.Items;
+
+import com.gildedrose.Item;
 
 public class GildedItem extends Item {
     public GildedItem(String name, int sellIn, int quality) {

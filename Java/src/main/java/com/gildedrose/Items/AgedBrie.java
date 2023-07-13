@@ -1,4 +1,6 @@
-package com.gildedrose;
+package com.gildedrose.Items;
+
+import com.gildedrose.Item;
 
 public class AgedBrie extends GildedItem {
     public AgedBrie(Item item) {
