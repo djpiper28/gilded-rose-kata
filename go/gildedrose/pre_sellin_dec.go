@@ -18,10 +18,12 @@ func updateBackStagePassQualityPreSellInDec(item *Item) {
 }
 
 func updateStandardItemQualityPreSellInDec(item *Item) {
-	if item.Quality > 0 {
-		if item.Name != SULFURAS {
-			item.Quality = item.Quality - 1
-		}
+	if item.Quality <= 0 {
+		return
+	}
+
+	if item.Name != SULFURAS {
+		item.Quality = item.Quality - 1
 	}
 }
 
