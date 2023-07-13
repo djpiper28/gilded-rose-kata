@@ -22,12 +22,10 @@ class GildedRose {
     private void updateItemsPreSellInDecrement(int i) {
         if (items[i].name.equals("Aged Brie")
             || items[i].name.equals("Backstage passes to a TAFKAL80ETC concert")) {
-            if (items[i].quality < 50) {
-                items[i].quality = items[i].quality + 1;
+            incrementItemQuality(i);
 
-                if (items[i].name.equals("Backstage passes to a TAFKAL80ETC concert")) {
-                    updateBackstagePassPreSellInDecrement(i);
-                }
+            if (items[i].name.equals("Backstage passes to a TAFKAL80ETC concert")) {
+                updateBackstagePassPreSellInDecrement(i);
             }
         } else {
             decrementItemQuality(i);
