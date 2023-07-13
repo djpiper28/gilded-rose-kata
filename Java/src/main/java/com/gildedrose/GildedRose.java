@@ -45,15 +45,17 @@ class GildedRose {
     }
 
     private void updateitemsPostSellInDecrement(int i) {
-        if (items[i].sellIn < 0) {
-            if (items[i].name.equals("Aged Brie")) {
-                incrementItemQuality(i);
+        if (items[i].sellIn >= 0) {
+            return;
+        }
+
+        if (items[i].name.equals("Aged Brie")) {
+            incrementItemQuality(i);
+        } else {
+            if (items[i].name.equals("Backstage passes to a TAFKAL80ETC concert")) {
+                items[i].quality = 0;
             } else {
-                if (items[i].name.equals("Backstage passes to a TAFKAL80ETC concert")) {
-                    items[i].quality = 0;
-                } else {
-                    decrementItemQuality(i);
-                }
+                decrementItemQuality(i);
             }
         }
     }
