@@ -6,4 +6,10 @@ public class ConjuredItem extends GildedItem {
     public ConjuredItem(Item item) {
         super(item.name, item.sellIn, item.quality);
     }
+
+    @Override
+    protected void updateItemsPreSellInDecrement() {
+        decrementItemQuality();
+        decrementItemQuality();
+    }
 }

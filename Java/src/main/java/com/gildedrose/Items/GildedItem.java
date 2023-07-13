@@ -14,9 +14,6 @@ public class GildedItem extends Item {
     }
 
     protected void updateItemsPreSellInDecrement() {
-        if (isConjured()) {
-            decrementItemQuality();
-        }
         decrementItemQuality();
     }
 
