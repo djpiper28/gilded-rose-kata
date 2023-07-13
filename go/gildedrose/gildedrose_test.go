@@ -88,6 +88,7 @@ func Test_SulfuransQualityStaysAt80(t *testing.T) {
 
 	gildedrose.UpdateQuality(items)
 	assert.Equal(t, 80, items[0].Quality, "Sulfuras should have a quality of 80 always")
+  assert.Equal(t, 10, items[0].SellIn, "sellin should not change for Sulfuras")
 }
 
 // "Backstage passes", like aged brie, increases in Quality as its SellIn value approaches;
