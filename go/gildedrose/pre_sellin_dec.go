@@ -2,7 +2,7 @@ package gildedrose
 
 import "strings"
 
-func updateBackStagePassQualityPreSellInDec(item *Item) {
+func (item *Item) updateBackStagePassQualityPreSellInDec() {
 	if item.Name != BACKSTAGE_PASS {
 		return
 	}
@@ -20,7 +20,7 @@ func updateBackStagePassQualityPreSellInDec(item *Item) {
 	}
 }
 
-func updateStandardItemQualityPreSellInDec(item *Item) {
+func (item *Item) updateStandardItemQualityPreSellInDec() {
 	if item.Name == BACKSTAGE_PASS || item.Name == AGED_BRIE {
 		return
 	}
@@ -35,13 +35,13 @@ func updateStandardItemQualityPreSellInDec(item *Item) {
 	}
 }
 
-func updateItemQualityPreSellInDec(item *Item) {
+func (item *Item) updateItemQualityPreSellInDec() {
 	if item.Name == BACKSTAGE_PASS {
-		updateBackStagePassQualityPreSellInDec(item)
+		item.updateBackStagePassQualityPreSellInDec()
 	}
 
 	if item.Name != AGED_BRIE && item.Name != BACKSTAGE_PASS {
-		updateStandardItemQualityPreSellInDec(item)
+		item.updateStandardItemQualityPreSellInDec()
 	} else if item.Quality < 50 {
 		item.Quality++
 	}

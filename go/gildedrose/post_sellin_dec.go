@@ -1,6 +1,6 @@
 package gildedrose
 
-func updateBrieQualityPostSellInDec(item *Item) {
+func (item *Item) updateBrieQualityPostSellInDec() {
 	if item.Name != AGED_BRIE {
 		return
 	}
@@ -10,13 +10,13 @@ func updateBrieQualityPostSellInDec(item *Item) {
 	}
 }
 
-func updateItemQualityPostSellInDec(item *Item) {
+func (item *Item) updateItemQualityPostSellInDec() {
 	if item.SellIn >= 0 {
 		return
 	}
 
 	if item.Name == AGED_BRIE {
-		updateBrieQualityPostSellInDec(item)
+		item.updateBrieQualityPostSellInDec()
 	} else if item.Name == BACKSTAGE_PASS {
 		item.Quality = 0
 	} else if item.Quality > 0 {
