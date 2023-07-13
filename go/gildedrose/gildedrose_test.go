@@ -88,9 +88,103 @@ func Test_SulfuransQualityStaysAt80(t *testing.T) {
 
 	gildedrose.UpdateQuality(items)
 	assert.Equal(t, 80, items[0].Quality, "Sulfuras should have a quality of 80 always")
-  assert.Equal(t, 10, items[0].SellIn, "sellin should not change for Sulfuras")
+	assert.Equal(t, 10, items[0].SellIn, "sellin should not change for Sulfuras")
 }
 
 // "Backstage passes", like aged brie, increases in Quality as its SellIn value approaches;
 //	Quality increases by 2 when there are 10 days or less and by 3 when there are 5 days or less but
 //	Quality drops to 0 after the concert
+func Test_BackstagePassQualityIncreasesFarOut(t *testing.T) {
+	items := []*gildedrose.Item{
+		{Name: "Backstage passes to a TAFKAL80ETC concert",
+			SellIn:  180,
+			Quality: 20},
+	}
+
+	gildedrose.UpdateQuality(items)
+	assert.Equal(t, 21, items[0].Quality, "Backstage passes that are over 10 days out should get older at rate 1")
+	assert.Equal(t, 179, items[0].SellIn, "Backstage should have their sellin decrease")
+}
+
+func Test_BackstagePassQualityIncreases10Days(t *testing.T) {
+	items := []*gildedrose.Item{
+		{Name: "Backstage passes to a TAFKAL80ETC concert",
+			SellIn:  10,
+			Quality: 20},
+	}
+
+	gildedrose.UpdateQuality(items)
+	assert.Equal(t, 22, items[0].Quality, "Backstage passes that are 10 days out should get older at rate 2")
+	assert.Equal(t, 9, items[0].SellIn, "Backstage should have their sellin decrease")
+}
+
+func Test_BackstagePassQualityIncreases9Days(t *testing.T) {
+	items := []*gildedrose.Item{
+		{Name: "Backstage passes to a TAFKAL80ETC concert",
+			SellIn:  9,
+			Quality: 20},
+	}
+
+	gildedrose.UpdateQuality(items)
+	assert.Equal(t, 22, items[0].Quality, "Backstage passes that are 9 days out should get older at rate 2")
+	assert.Equal(t, 8, items[0].SellIn, "Backstage should have their sellin decrease")
+}
+
+func Test_BackstagePassQualityIncreases5Days(t *testing.T) {
+	items := []*gildedrose.Item{
+		{Name: "Backstage passes to a TAFKAL80ETC concert",
+			SellIn:  5,
+			Quality: 20},
+	}
+
+	gildedrose.UpdateQuality(items)
+	assert.Equal(t, 23, items[0].Quality, "Backstage passes that are 5 days out should get older at rate 3")
+	assert.Equal(t, 4, items[0].SellIn, "Backstage should have their sellin decrease")
+}
+
+func Test_BackstagePassQualityIncreases4Days(t *testing.T) {
+	items := []*gildedrose.Item{
+		{Name: "Backstage passes to a TAFKAL80ETC concert",
+			SellIn:  4,
+			Quality: 20},
+	}
+
+	gildedrose.UpdateQuality(items)
+	assert.Equal(t, 23, items[0].Quality, "Backstage passes that are 4 days out should get older at rate 3")
+	assert.Equal(t, 3, items[0].SellIn, "Backstage should have their sellin decrease")
+}
+
+func Test_BackstagePassQualityIncreases1Days(t *testing.T) {
+	items := []*gildedrose.Item{
+		{Name: "Backstage passes to a TAFKAL80ETC concert",
+			SellIn:  1,
+			Quality: 20},
+	}
+
+	gildedrose.UpdateQuality(items)
+	assert.Equal(t, 23, items[0].Quality, "Backstage passes that are 1 days out should get older at rate 3")
+	assert.Equal(t, 0, items[0].SellIn, "Backstage should have their sellin decrease")
+}
+
+func Test_BackstagePassQualityIncreases0Days(t *testing.T) {
+	items := []*gildedrose.Item{
+		{Name: "Backstage passes to a TAFKAL80ETC concert",
+			SellIn:  0,
+			Quality: 20},
+	}
+
+	gildedrose.UpdateQuality(items)
+	assert.Equal(t, 0, items[0].Quality, "Backstage passes should have no quality after the conert")
+	assert.Equal(t, -1, items[0].SellIn, "Backstage should have their sellin decrease")
+}
+
+func Test_BackstagePassQualityIncreasesAfterConcertDays(t *testing.T) {
+	items := []*gildedrose.Item{
+		{Name: "Backstage passes to a TAFKAL80ETC concert",
+			SellIn:  -1,
+			Quality: 20},
+	}
+
+	gildedrose.UpdateQuality(items)
+	assert.Equal(t, 0, items[0].Quality, "Backstage passes should have no quality after the conert")
+}
