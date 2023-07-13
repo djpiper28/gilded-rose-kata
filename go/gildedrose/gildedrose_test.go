@@ -32,6 +32,16 @@ func Test_SellByDatePassed(t *testing.T) {
 }
 
 // The Quality of an item is never negative
+func Test_NegativeQualityRemovedOnTick(t *testing.T) {
+	items := []*gildedrose.Item{
+		{Name: "Really rotten tomatoes",
+			SellIn:  4,
+			Quality: 0},
+	}
+
+	gildedrose.UpdateQuality(items)
+	assert.Equal(t, 0, items[0].Quality, "Items with zero quality should not tick down to negative values")
+}
 
 // "Aged Brie" actually increases in Quality the older it gets
 
