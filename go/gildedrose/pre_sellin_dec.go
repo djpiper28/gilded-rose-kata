@@ -10,10 +10,10 @@ func updateBackStagePassQualityPreSellInDec(item *Item) {
 	}
 
 	if item.SellIn < 11 {
-		item.Quality = item.Quality + 1
+		item.Quality++
 	}
 	if item.SellIn < 6 {
-		item.Quality = item.Quality + 1
+		item.Quality++
 	}
 }
 
@@ -23,7 +23,7 @@ func updateStandardItemQualityPreSellInDec(item *Item) {
 	}
 
 	if item.Name != SULFURAS {
-		item.Quality = item.Quality - 1
+		item.Quality--
 	}
 }
 
@@ -34,7 +34,7 @@ func updateItemQualityPreSellInDec(item *Item) {
 	}
 
 	if item.Quality < 50 {
-		item.Quality = item.Quality + 1
+		item.Quality++
 		updateBackStagePassQualityPreSellInDec(item)
 	}
 }

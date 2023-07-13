@@ -4,7 +4,7 @@ func updateItem(item *Item) {
 	updateItemQualityPreSellInDec(item)
 
 	if item.Name != SULFURAS {
-		item.SellIn = item.SellIn - 1
+		item.SellIn--
 	}
 
 	updateItemQualityPostSellInDec(item)
