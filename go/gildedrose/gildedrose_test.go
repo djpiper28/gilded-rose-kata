@@ -214,8 +214,8 @@ func Test_MultipleItems(t *testing.T) {
 	assert.Equal(t, 50, items[2].Quality, "Aged Brie should get better as it gets older until it has 50 quality")
 	assert.Equal(t, 0, items[2].SellIn, "Aged Brie should have sellin tick down")
 
-	assert.Equal(t, 122, items[3].Quality, "normal items should have sellin tick down")
-	assert.Equal(t, 122, items[3].SellIn, "normal items quality should tick down")
+	assert.Equal(t, 122, items[3].Quality, "normal items should have quality tick down")
+	assert.Equal(t, 122, items[3].SellIn, "normal items should have sellin tick down")
 }
 
 // We have recently signed a supplier of conjured items. This requires an update to our system:
@@ -266,4 +266,38 @@ func Test_ConjureItemDecayCannotGoBelowZeroEdgeCase(t *testing.T) {
 	gildedrose.UpdateQuality(items)
 	assert.Equal(t, 0, items[0].Quality, "Conjured items should note have negative quality")
 	assert.Equal(t, 8, items[0].SellIn, "Conjure items should get older")
+}
+
+func Test_ManyTicks(t *testing.T) {
+	const BASE = 100
+	items := []*gildedrose.Item{
+		{Name: "Backstage passes to a TAFKAL80ETC concert",
+			SellIn:  BASE,
+			Quality: 20},
+		{Name: "Sulfuras, Hand of Ragnaros",
+			SellIn:  BASE,
+			Quality: 80},
+		{Name: "Aged Brie",
+			SellIn:  BASE,
+			Quality: 50},
+		{Name: "Fresh Hashish",
+			SellIn:  BASE,
+			Quality: 123},
+	}
+
+	for i := 0; i < 12000; i++ {
+		gildedrose.UpdateQuality(items)
+		for _, item := range items {
+			if item.Name != gildedrose.SULFURAS {
+				assert.Equal(t, BASE-i-1, item.SellIn, "All items should have sellin decrement")
+			} else {
+				assert.Equal(t, BASE, item.SellIn, "Sulfuras should not have SellIn decrement")
+			}
+		}
+	}
+
+	assert.Equal(t, 0, items[0].Quality, "Backstage passes should have no quality after the conert")
+	assert.Equal(t, 80, items[1].Quality, "Sulfuras should have a quality of 80 always")
+	assert.Equal(t, 50, items[2].Quality, "Aged Brie should get better as it gets older until it has 50 quality")
+	assert.Equal(t, 0, items[3].Quality, "normal items should have sellin tick down")
 }
