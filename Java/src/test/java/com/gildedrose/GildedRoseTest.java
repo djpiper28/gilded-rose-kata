@@ -27,6 +27,16 @@ class GildedRoseTest {
     }
 
     @Test
+    void itemQualityShouldDegradeAtDoubleSpeedAfterSellby() {
+        Item[] items = new Item[] { new Item("Shittake", 0, 5) };
+        GildedRose app = new GildedRose(items);
+
+        app.updateQuality();
+        assertEquals(4, app.items[0].quality, "The item should have one less quality");
+        assertEquals(-1, app.items[0].sellIn, "The Item should have one less day on its date");
+    }
+
+    @Test
     void itemsShouldNotGetNegativeQuality() {
         Item[] items = new Item[] { new Item("Shittake", 5, 0) };
         GildedRose app = new GildedRose(items);
