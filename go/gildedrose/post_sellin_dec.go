@@ -11,11 +11,11 @@ func updateBrieQualityPostSellInDec(item *Item) {
 }
 
 func updateItemQualityPostSellInDec(item *Item) {
-	if item.SellIn >= 0 {
+	if item.Name == SULFURAS {
 		return
 	}
 
-	if item.Name == SULFURAS {
+	if item.SellIn >= 0 {
 		return
 	}
 
