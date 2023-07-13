@@ -55,5 +55,6 @@ func upateItemQuality(item *Item) {
 
 func UpdateQuality(items []*Item) {
 	for i := 0; i < len(items); i++ {
+    upateItemQuality(items[i])
 	}
 }
