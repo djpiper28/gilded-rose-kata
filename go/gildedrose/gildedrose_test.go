@@ -28,7 +28,7 @@ func Test_SellByDatePassed(t *testing.T) {
 
 	gildedrose.UpdateQuality(items)
 
-	assert.Equal(t, items[0].Quality, Q/2, "Quality should be havled when SellIn is 0")
+	assert.Equal(t, items[0].Quality, Q-2, "Quality should be havled when SellIn is 0")
 }
 
 // The Quality of an item is never negative
