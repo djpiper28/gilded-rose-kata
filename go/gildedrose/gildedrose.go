@@ -1,12 +1,12 @@
 package gildedrose
 
 func updateItem(item *Item) {
-	updateItemQualityPreSellInDec(item)
-
-	if item.Name != SULFURAS {
-		item.SellIn--
+	if item.Name == SULFURAS {
+		return
 	}
 
+	updateItemQualityPreSellInDec(item)
+	item.SellIn--
 	updateItemQualityPostSellInDec(item)
 }
 

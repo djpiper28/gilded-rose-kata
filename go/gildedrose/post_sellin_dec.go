@@ -11,10 +11,6 @@ func updateBrieQualityPostSellInDec(item *Item) {
 }
 
 func updateItemQualityPostSellInDec(item *Item) {
-	if item.Name == SULFURAS {
-		return
-	}
-
 	if item.SellIn >= 0 {
 		return
 	}
