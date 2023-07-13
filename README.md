@@ -51,3 +51,8 @@ Please don't write too much code in the starting position or add too many unit t
 
 If your programming language doesn't have an easy way to add a command-line interface, then the TextTest fixture is probably not necessary.
 
+---
+
+## Programming Languages Completed In
+
+ - [x] Go

@@ -8,7 +8,7 @@ import (
 )
 
 func Test_Foo(t *testing.T) {
-	var items = []*gildedrose.Item{
+	items := []*gildedrose.Item{
 		{"foo", 0, 0},
 	}
 
