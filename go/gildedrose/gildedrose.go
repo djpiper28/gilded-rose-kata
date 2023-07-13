@@ -17,7 +17,7 @@ func updateBackStagePassQuality(item *Item) {
 	}
 }
 
-func upateItemQuality(item *Item) {
+func updateItemQuality(item *Item) {
 	if item.Name != AGED_BRIE && item.Name != BACKSTAGE_PASS {
 		if item.Quality > 0 {
 			if item.Name != SULFURAS {
@@ -30,6 +30,10 @@ func upateItemQuality(item *Item) {
 			updateBackStagePassQuality(item)
 		}
 	}
+}
+
+func updateItem(item *Item) {
+	updateItemQuality(item)
 
 	if item.Name != SULFURAS {
 		item.SellIn = item.SellIn - 1
@@ -56,6 +60,6 @@ func upateItemQuality(item *Item) {
 
 func UpdateQuality(items []*Item) {
 	for i := 0; i < len(items); i++ {
-		upateItemQuality(items[i])
+		updateItem(items[i])
 	}
 }
