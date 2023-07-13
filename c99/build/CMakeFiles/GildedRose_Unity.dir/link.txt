@@ -1,0 +1,1 @@
+/usr/bin/cc -rdynamic CMakeFiles/GildedRose_Unity.dir/GildedRose.c.o CMakeFiles/GildedRose_Unity.dir/unity-src/src/unity.c.o CMakeFiles/GildedRose_Unity.dir/test_unity_gildedrose.c.o -o GildedRose_Unity 

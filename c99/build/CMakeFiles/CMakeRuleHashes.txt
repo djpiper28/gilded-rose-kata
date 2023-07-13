@@ -1,0 +1,12 @@
+# Hashes of file build rules.
+d908ce47910b7c34dd1a2ae02203d1f1 CMakeFiles/unity
+297a6110ec0b86d1986c612b9feb6f60 CMakeFiles/unity-complete
+5799af56b437c26b16f4cb7b85d6d67b unity-prefix/src/unity-stamp/unity-build
+fc6c71db6d5fdf5b9d7d96c15a608e4b unity-prefix/src/unity-stamp/unity-configure
+333eebd28ab4caaa5f7f5dcfc99a7ffd unity-prefix/src/unity-stamp/unity-download
+5899c05aec1df61bdcce5a5c39c2486f unity-prefix/src/unity-stamp/unity-install
+e285a7627df1f324a258e3636bc24f81 unity-prefix/src/unity-stamp/unity-mkdir
+030df9788e2ff684b31260c1c00b063f unity-prefix/src/unity-stamp/unity-patch
+b7c932cd1cadccb5d44d22ca971c7343 unity-prefix/src/unity-stamp/unity-test
+fa711e13b4175bcb0c52e9667a1096c1 unity-prefix/src/unity-stamp/unity-update
+d908ce47910b7c34dd1a2ae02203d1f1 unity-src/src/unity.c

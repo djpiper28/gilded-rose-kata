@@ -1,0 +1,14 @@
+# Target labels
+ unity
+# Source files and their labels
+/home/danny/projects/extended-learning/gilded-rose-kata/c99/build/CMakeFiles/unity
+/home/danny/projects/extended-learning/gilded-rose-kata/c99/build/CMakeFiles/unity.rule
+/home/danny/projects/extended-learning/gilded-rose-kata/c99/build/CMakeFiles/unity-complete.rule
+/home/danny/projects/extended-learning/gilded-rose-kata/c99/build/unity-prefix/src/unity-stamp/unity-build.rule
+/home/danny/projects/extended-learning/gilded-rose-kata/c99/build/unity-prefix/src/unity-stamp/unity-configure.rule
+/home/danny/projects/extended-learning/gilded-rose-kata/c99/build/unity-prefix/src/unity-stamp/unity-download.rule
+/home/danny/projects/extended-learning/gilded-rose-kata/c99/build/unity-prefix/src/unity-stamp/unity-install.rule
+/home/danny/projects/extended-learning/gilded-rose-kata/c99/build/unity-prefix/src/unity-stamp/unity-mkdir.rule
+/home/danny/projects/extended-learning/gilded-rose-kata/c99/build/unity-prefix/src/unity-stamp/unity-patch.rule
+/home/danny/projects/extended-learning/gilded-rose-kata/c99/build/unity-prefix/src/unity-stamp/unity-test.rule
+/home/danny/projects/extended-learning/gilded-rose-kata/c99/build/unity-prefix/src/unity-stamp/unity-update.rule

@@ -1,0 +1,5 @@
+/home/danny/projects/extended-learning/gilded-rose-kata/c99/build/CMakeFiles/unity.dir
+/home/danny/projects/extended-learning/gilded-rose-kata/c99/build/CMakeFiles/GildedRose_Unity.dir
+/home/danny/projects/extended-learning/gilded-rose-kata/c99/build/CMakeFiles/test.dir
+/home/danny/projects/extended-learning/gilded-rose-kata/c99/build/CMakeFiles/edit_cache.dir
+/home/danny/projects/extended-learning/gilded-rose-kata/c99/build/CMakeFiles/rebuild_cache.dir

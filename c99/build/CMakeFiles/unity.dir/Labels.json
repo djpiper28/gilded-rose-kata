@@ -1,0 +1,46 @@
+{
+	"sources" : 
+	[
+		{
+			"file" : "/home/danny/projects/extended-learning/gilded-rose-kata/c99/build/CMakeFiles/unity"
+		},
+		{
+			"file" : "/home/danny/projects/extended-learning/gilded-rose-kata/c99/build/CMakeFiles/unity.rule"
+		},
+		{
+			"file" : "/home/danny/projects/extended-learning/gilded-rose-kata/c99/build/CMakeFiles/unity-complete.rule"
+		},
+		{
+			"file" : "/home/danny/projects/extended-learning/gilded-rose-kata/c99/build/unity-prefix/src/unity-stamp/unity-build.rule"
+		},
+		{
+			"file" : "/home/danny/projects/extended-learning/gilded-rose-kata/c99/build/unity-prefix/src/unity-stamp/unity-configure.rule"
+		},
+		{
+			"file" : "/home/danny/projects/extended-learning/gilded-rose-kata/c99/build/unity-prefix/src/unity-stamp/unity-download.rule"
+		},
+		{
+			"file" : "/home/danny/projects/extended-learning/gilded-rose-kata/c99/build/unity-prefix/src/unity-stamp/unity-install.rule"
+		},
+		{
+			"file" : "/home/danny/projects/extended-learning/gilded-rose-kata/c99/build/unity-prefix/src/unity-stamp/unity-mkdir.rule"
+		},
+		{
+			"file" : "/home/danny/projects/extended-learning/gilded-rose-kata/c99/build/unity-prefix/src/unity-stamp/unity-patch.rule"
+		},
+		{
+			"file" : "/home/danny/projects/extended-learning/gilded-rose-kata/c99/build/unity-prefix/src/unity-stamp/unity-test.rule"
+		},
+		{
+			"file" : "/home/danny/projects/extended-learning/gilded-rose-kata/c99/build/unity-prefix/src/unity-stamp/unity-update.rule"
+		}
+	],
+	"target" : 
+	{
+		"labels" : 
+		[
+			"unity"
+		],
+		"name" : "unity"
+	}
+}
