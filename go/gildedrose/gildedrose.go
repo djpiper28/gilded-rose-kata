@@ -24,11 +24,12 @@ func updateItemQualityPreSellInDec(item *Item) {
 				item.Quality = item.Quality - 1
 			}
 		}
-	} else {
-		if item.Quality < 50 {
-			item.Quality = item.Quality + 1
-			updateBackStagePassQuality(item)
-		}
+		return
+	}
+
+	if item.Quality < 50 {
+		item.Quality = item.Quality + 1
+		updateBackStagePassQuality(item)
 	}
 }
 
