@@ -20,11 +20,11 @@ class GildedRose {
     }
 
     private void updateItemsPreSellInDecrement(int i) {
-        if (items[i].name.equals("Aged Brie")
-            || items[i].name.equals("Backstage passes to a TAFKAL80ETC concert")) {
+        if (isAgedBrie(i)
+            || isBackStagePass(i)) {
             incrementItemQuality(i);
 
-            if (items[i].name.equals("Backstage passes to a TAFKAL80ETC concert")) {
+            if (isBackStagePass(i)) {
                 updateBackstagePassPreSellInDecrement(i);
             }
         } else {
@@ -33,6 +33,14 @@ class GildedRose {
             }
             decrementItemQuality(i);
         }
+    }
+
+    private boolean isBackStagePass(int i) {
+        return items[i].name.equals("Backstage passes to a TAFKAL80ETC concert");
+    }
+
+    private boolean isAgedBrie(int i) {
+        return items[i].name.equals("Aged Brie");
     }
 
     private void updateBackstagePassPreSellInDecrement(int i) {
@@ -50,10 +58,10 @@ class GildedRose {
             return;
         }
 
-        if (items[i].name.equals("Aged Brie")) {
+        if (isAgedBrie(i)) {
             incrementItemQuality(i);
         } else {
-            if (items[i].name.equals("Backstage passes to a TAFKAL80ETC concert")) {
+            if (isBackStagePass(i)) {
                 items[i].quality = 0;
             } else {
                 decrementItemQuality(i);
