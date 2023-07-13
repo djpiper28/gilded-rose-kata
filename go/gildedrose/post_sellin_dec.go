@@ -1,6 +1,10 @@
 package gildedrose
 
 func updateBrieQualityPostSellInDec(item *Item) {
+	if item.Name != AGED_BRIE {
+		return
+	}
+
 	if item.Quality < 50 {
 		item.Quality++
 	}
