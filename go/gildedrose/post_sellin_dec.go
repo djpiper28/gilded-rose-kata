@@ -11,19 +11,15 @@ func updateItemQualityPostSellInDec(item *Item) {
 		return
 	}
 
+	if item.Name == SULFURAS {
+		return
+	}
+
 	if item.Name == AGED_BRIE {
 		updateBrieQualityPostSellInDec(item)
-		return
-	}
-
-	if item.Name == BACKSTAGE_PASS {
+	} else if item.Name == BACKSTAGE_PASS {
 		item.Quality = 0
-		return
-	}
-
-	if item.Quality > 0 {
-		if item.Name != SULFURAS {
-			item.Quality--
-		}
+	} else if item.Quality > 0 {
+		item.Quality--
 	}
 }

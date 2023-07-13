@@ -11,10 +11,11 @@ func updateBackStagePassQualityPreSellInDec(item *Item) {
 		return
 	}
 
-	if item.SellIn < 11 {
+	if item.SellIn <= 10 {
 		item.Quality++
 	}
-	if item.SellIn < 6 {
+
+	if item.SellIn <= 5 {
 		item.Quality++
 	}
 }
@@ -24,10 +25,11 @@ func updateStandardItemQualityPreSellInDec(item *Item) {
 		return
 	}
 
-	if item.Name != SULFURAS {
-		item.Quality--
+	if item.Name == SULFURAS {
+		return
 	}
 
+	item.Quality--
 	if strings.Contains(item.Name, CONJURED_PREFIX) && item.Quality > 0 {
 		item.Quality--
 	}
@@ -36,10 +38,7 @@ func updateStandardItemQualityPreSellInDec(item *Item) {
 func updateItemQualityPreSellInDec(item *Item) {
 	if item.Name != AGED_BRIE && item.Name != BACKSTAGE_PASS {
 		updateStandardItemQualityPreSellInDec(item)
-		return
-	}
-
-	if item.Quality < 50 {
+	} else if item.Quality < 50 {
 		item.Quality++
 		updateBackStagePassQualityPreSellInDec(item)
 	}
