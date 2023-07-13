@@ -188,3 +188,32 @@ func Test_BackstagePassQualityIncreasesAfterConcertDays(t *testing.T) {
 	gildedrose.UpdateQuality(items)
 	assert.Equal(t, 0, items[0].Quality, "Backstage passes should have no quality after the conert")
 }
+
+func Test_MultipleItems(t *testing.T) {
+	items := []*gildedrose.Item{
+		{Name: "Backstage passes to a TAFKAL80ETC concert",
+			SellIn:  -1,
+			Quality: 20},
+		{Name: "Sulfuras, Hand of Ragnaros",
+			SellIn:  10,
+			Quality: 80},
+		{Name: "Aged Brie",
+			SellIn:  1,
+			Quality: 50},
+		{Name: "Fresh Hashish",
+			SellIn:  123,
+			Quality: 123},
+	}
+
+	gildedrose.UpdateQuality(items)
+	assert.Equal(t, 0, items[0].Quality, "Backstage passes should have no quality after the conert")
+
+	assert.Equal(t, 80, items[1].Quality, "Sulfuras should have a quality of 80 always")
+	assert.Equal(t, 10, items[1].SellIn, "sellin should not change for Sulfuras")
+
+	assert.Equal(t, 50, items[2].Quality, "Aged Brie should get better as it gets older until it has 50 quality")
+	assert.Equal(t, 0, items[2].SellIn, "Aged Brie should have sellin tick down")
+
+	assert.Equal(t, 122, items[3].Quality, "normal items should have sellin tick down")
+	assert.Equal(t, 122, items[3].SellIn, "normal items quality should tick down")
+}
