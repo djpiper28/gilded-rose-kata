@@ -36,10 +36,13 @@ func updateStandardItemQualityPreSellInDec(item *Item) {
 }
 
 func updateItemQualityPreSellInDec(item *Item) {
+	if item.Name == BACKSTAGE_PASS {
+		updateBackStagePassQualityPreSellInDec(item)
+	}
+
 	if item.Name != AGED_BRIE && item.Name != BACKSTAGE_PASS {
 		updateStandardItemQualityPreSellInDec(item)
 	} else if item.Quality < 50 {
 		item.Quality++
-		updateBackStagePassQualityPreSellInDec(item)
 	}
 }
