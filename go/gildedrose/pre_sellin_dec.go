@@ -1,5 +1,7 @@
 package gildedrose
 
+import "strings"
+
 func updateBackStagePassQualityPreSellInDec(item *Item) {
 	if item.Name != BACKSTAGE_PASS {
 		return
@@ -23,6 +25,10 @@ func updateStandardItemQualityPreSellInDec(item *Item) {
 	}
 
 	if item.Name != SULFURAS {
+		item.Quality--
+	}
+
+	if strings.Contains(item.Name, CONJURED_PREFIX) && item.Quality > 0 {
 		item.Quality--
 	}
 }

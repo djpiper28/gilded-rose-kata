@@ -217,3 +217,53 @@ func Test_MultipleItems(t *testing.T) {
 	assert.Equal(t, 122, items[3].Quality, "normal items should have sellin tick down")
 	assert.Equal(t, 122, items[3].SellIn, "normal items quality should tick down")
 }
+
+// We have recently signed a supplier of conjured items. This requires an update to our system:
+// 	- "Conjured" items degrade in Quality twice as fast as normal items
+func Test_ConjureItemDecay(t *testing.T) {
+	items := []*gildedrose.Item{
+		{Name: "Conjured Anchovies",
+			SellIn:  9,
+			Quality: 20},
+	}
+
+	gildedrose.UpdateQuality(items)
+	assert.Equal(t, 18, items[0].Quality, "Conjured items should decay twice as fast")
+	assert.Equal(t, 8, items[0].SellIn, "Conjure items should get older")
+}
+
+func Test_ConjureItemDecayCanDecayToZero(t *testing.T) {
+	items := []*gildedrose.Item{
+		{Name: "Conjured Anchovies",
+			SellIn:  9,
+			Quality: 2},
+	}
+
+	gildedrose.UpdateQuality(items)
+	assert.Equal(t, 0, items[0].Quality, "Conjured items should note have negative quality")
+	assert.Equal(t, 8, items[0].SellIn, "Conjure items should get older")
+}
+
+func Test_ConjureItemDecayCannotGoBelowZero(t *testing.T) {
+	items := []*gildedrose.Item{
+		{Name: "Conjured Anchovies",
+			SellIn:  9,
+			Quality: 0},
+	}
+
+	gildedrose.UpdateQuality(items)
+	assert.Equal(t, 0, items[0].Quality, "Conjured items should note have negative quality")
+	assert.Equal(t, 8, items[0].SellIn, "Conjure items should get older")
+}
+
+func Test_ConjureItemDecayCannotGoBelowZeroEdgeCase(t *testing.T) {
+	items := []*gildedrose.Item{
+		{Name: "Conjured Anchovies",
+			SellIn:  9,
+			Quality: 1},
+	}
+
+	gildedrose.UpdateQuality(items)
+	assert.Equal(t, 0, items[0].Quality, "Conjured items should note have negative quality")
+	assert.Equal(t, 8, items[0].SellIn, "Conjure items should get older")
+}
