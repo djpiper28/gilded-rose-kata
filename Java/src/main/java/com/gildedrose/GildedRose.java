@@ -28,6 +28,9 @@ class GildedRose {
                 updateBackstagePassPreSellInDecrement(i);
             }
         } else {
+            if (items[i].name.contains("Conjured")) {
+                decrementItemQuality(i);
+            }
             decrementItemQuality(i);
         }
     }
