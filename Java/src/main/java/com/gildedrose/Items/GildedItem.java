@@ -14,18 +14,10 @@ public class GildedItem extends Item {
     }
 
     protected void updateItemsPreSellInDecrement() {
-        if (isBackStagePass()) {
-            incrementItemQuality();
-
-            if (isBackStagePass()) {
-                updateBackstagePassPreSellInDecrement();
-            }
-        } else {
-            if (isConjured()) {
-                decrementItemQuality();
-            }
+        if (isConjured()) {
             decrementItemQuality();
         }
+        decrementItemQuality();
     }
 
     public boolean isSulfuras() {
@@ -44,26 +36,12 @@ public class GildedItem extends Item {
         return name.equals("Aged Brie");
     }
 
-    private void updateBackstagePassPreSellInDecrement() {
-        if (sellIn < 11) {
-            incrementItemQuality();
-        }
-
-        if (sellIn < 6) {
-            incrementItemQuality();
-        }
-    }
-
     protected void updateitemsPostSellInDecrement() {
         if (sellIn >= 0) {
             return;
         }
 
-        if (isBackStagePass()) {
-            quality = 0;
-        } else {
-            decrementItemQuality();
-        }
+        decrementItemQuality();
     }
 
     protected void decrementItemQuality() {

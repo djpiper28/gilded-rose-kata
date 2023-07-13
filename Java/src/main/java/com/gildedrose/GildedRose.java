@@ -1,5 +1,8 @@
 package com.gildedrose;
 
+import com.gildedrose.Items.GildedItem;
+import com.gildedrose.Items.GildedItemFactory;
+
 class GildedRose {
     GildedItem[] items;
 
