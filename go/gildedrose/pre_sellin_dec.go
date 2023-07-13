@@ -3,10 +3,6 @@ package gildedrose
 import "strings"
 
 func (item *Item) updateBackStagePassQualityPreSellInDec() {
-	if item.Name != BACKSTAGE_PASS {
-		return
-	}
-
 	if item.SellIn <= 10 {
 		item.incQuality()
 	}
@@ -17,10 +13,6 @@ func (item *Item) updateBackStagePassQualityPreSellInDec() {
 }
 
 func (item *Item) updateStandardItemQualityPreSellInDec() {
-	if item.Name == BACKSTAGE_PASS || item.Name == AGED_BRIE {
-		return
-	}
-
 	item.decQuality()
 	if strings.Contains(item.Name, CONJURED_PREFIX) {
 		item.decQuality()
