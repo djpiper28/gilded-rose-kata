@@ -79,6 +79,16 @@ func Test_BrieQualityCapsOutAt50(t *testing.T) {
 }
 
 // "Sulfuras", being a legendary item, never has to be sold or decreases in Quality
+func Test_SulfuransQualityStaysAt80(t *testing.T) {
+	items := []*gildedrose.Item{
+		{Name: "Sulfuras, Hand of Ragnaros",
+			SellIn:  10,
+			Quality: 80},
+	}
+
+	gildedrose.UpdateQuality(items)
+	assert.Equal(t, 80, items[0].Quality, "Sulfuras should have a quality of 80 always")
+}
 
 // "Backstage passes", like aged brie, increases in Quality as its SellIn value approaches;
 //	Quality increases by 2 when there are 10 days or less and by 3 when there are 5 days or less but
