@@ -2,7 +2,7 @@ package gildedrose
 
 func updateBrieQualityPostSellInDec(item *Item) {
 	if item.Quality < 50 {
-		item.Quality = item.Quality + 1
+		item.Quality += 1
 	}
 }
 
@@ -16,14 +16,14 @@ func updateItemQualityPostSellInDec(item *Item) {
 		return
 	}
 
-	if item.Name != BACKSTAGE_PASS {
-		if item.Quality > 0 {
-			if item.Name != SULFURAS {
-				item.Quality = item.Quality - 1
-			}
-		}
+	if item.Name == BACKSTAGE_PASS {
+		item.Quality = 0
 		return
 	}
 
-	item.Quality = item.Quality - item.Quality
+	if item.Quality > 0 {
+		if item.Name != SULFURAS {
+			item.Quality -= 1
+		}
+	}
 }
