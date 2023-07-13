@@ -1,5 +1,22 @@
 package gildedrose
 
+func updateBackStagePassQuality(item *Item) {
+	if item.Name != BACKSTAGE_PASS {
+		return
+	}
+
+	if item.SellIn < 11 {
+		if item.Quality < 50 {
+			item.Quality = item.Quality + 1
+		}
+	}
+	if item.SellIn < 6 {
+		if item.Quality < 50 {
+			item.Quality = item.Quality + 1
+		}
+	}
+}
+
 func upateItemQuality(item *Item) {
 	if item.Name != AGED_BRIE && item.Name != BACKSTAGE_PASS {
 		if item.Quality > 0 {
@@ -10,18 +27,7 @@ func upateItemQuality(item *Item) {
 	} else {
 		if item.Quality < 50 {
 			item.Quality = item.Quality + 1
-			if item.Name == BACKSTAGE_PASS {
-				if item.SellIn < 11 {
-					if item.Quality < 50 {
-						item.Quality = item.Quality + 1
-					}
-				}
-				if item.SellIn < 6 {
-					if item.Quality < 50 {
-						item.Quality = item.Quality + 1
-					}
-				}
-			}
+			updateBackStagePassQuality(item)
 		}
 	}
 
