@@ -32,10 +32,17 @@ func updateItemQualityPreSellInDec(item *Item) {
 	}
 }
 
+func updateBrieQualityPostSellInDec(item *Item) {
+	if item.Quality < 50 {
+		item.Quality = item.Quality + 1
+	}
+}
+
 func updateItemQualityPostSellInDec(item *Item) {
 	if item.SellIn >= 0 {
 		return
 	}
+
 	if item.Name != AGED_BRIE {
 		if item.Name != BACKSTAGE_PASS {
 			if item.Quality > 0 {
@@ -47,9 +54,7 @@ func updateItemQualityPostSellInDec(item *Item) {
 			item.Quality = item.Quality - item.Quality
 		}
 	} else {
-		if item.Quality < 50 {
-			item.Quality = item.Quality + 1
-		}
+		updateBrieQualityPostSellInDec(item)
 	}
 }
 
