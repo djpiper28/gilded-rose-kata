@@ -128,12 +128,12 @@ class GildedRoseTest {
 
     @Test
     void backstagePassesOver11DaysOutShouldGetMoreQualityBy1ButNotMoreThan50() {
-        Item[] items = new Item[] { new Item("Backstage passes to a TAFKAL80ETC concert", 11, 50) };
+        Item[] items = new Item[] { new Item("Backstage passes to a TAFKAL80ETC concert", 12, 50) };
         GildedRose app = new GildedRose(items);
 
         app.updateQuality();
         assertEquals(50, items[0].quality, "The quality should have impproved by 1");
-        assertEquals(10, items[0].sellIn, "(sanity check) the pass should be older");
+        assertEquals(11, items[0].sellIn, "(sanity check) the pass should be older");
     }
 
     @Test
