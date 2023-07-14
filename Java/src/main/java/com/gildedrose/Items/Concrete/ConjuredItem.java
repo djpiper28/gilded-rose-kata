@@ -12,7 +12,8 @@ public class ConjuredItem extends GildedItem {
     public void updateItemQuality() {
         decrementItemQuality();
         decrementItemQuality();
-        item.sellIn--;
+
+        decrementSellIn();
         if (isItemOutOfDate()) {
             decrementItemQuality();
             decrementItemQuality();

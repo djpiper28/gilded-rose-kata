@@ -11,18 +11,18 @@ public class BackstagePassItem extends GildedItem {
     @Override
     public void updateItemQuality() {
         incrementItemQuality();
-        if (item.sellIn < 11) {
+        if (getSellIn() < 11) {
             incrementItemQuality();
         }
 
-        if (item.sellIn < 6) {
+        if (getSellIn() < 6) {
             incrementItemQuality();
         }
 
-        item.sellIn--;
+        decrementSellIn();
 
         if (isItemOutOfDate()) {
-            item.quality = 0;
+            zeroQuality();
         }
     }
 }

@@ -11,7 +11,8 @@ public class StandardItem extends GildedItem {
     @Override
     public void updateItemQuality() {
         decrementItemQuality();
-        item.sellIn--;
+
+        decrementSellIn();
         if (isItemOutOfDate()) {
             decrementItemQuality();
         }

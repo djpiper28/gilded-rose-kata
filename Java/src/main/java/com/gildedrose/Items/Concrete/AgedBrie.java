@@ -11,7 +11,7 @@ public class AgedBrie extends GildedItem {
     @Override
     public void updateItemQuality() {
         incrementItemQuality();
-        item.sellIn--;
+        decrementSellIn();
         if (isItemOutOfDate()) {
             incrementItemQuality();
         }

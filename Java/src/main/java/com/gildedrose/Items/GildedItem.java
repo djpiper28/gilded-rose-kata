@@ -3,7 +3,7 @@ package com.gildedrose.Items;
 import com.gildedrose.Item;
 
 public abstract class GildedItem {
-    protected Item item;
+    private Item item;
 
     public GildedItem(final Item item) {
         this.item = item;
@@ -25,5 +25,17 @@ public abstract class GildedItem {
 
     protected final boolean isItemOutOfDate() {
         return item.sellIn < 0;
+    }
+
+    protected final int getSellIn() {
+        return item.sellIn;
+    }
+
+    protected final void decrementSellIn() {
+        item.sellIn--;
+    }
+
+    protected final void zeroQuality() {
+        item.quality = 0;
     }
 }
