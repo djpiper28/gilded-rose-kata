@@ -8,7 +8,7 @@ type Item struct {
 }
 
 const (
-	SULFURAS        = "Sulfuras, Hand of Ragnaros"
+	SULFURAS        = "SulfurasItem, Hand of Ragnaros"
 	AGED_BRIE       = "Aged Brie"
 	BACKSTAGE_PASS  = "Backstage passes to a TAFKAL80ETC concert"
 	CONJURED_PREFIX = "Conjured"
@@ -32,11 +32,11 @@ type ItemStrategy interface {
 
 func (item *Item) GetItemStrategy() ItemStrategy {
 	if item.Name == SULFURAS {
-		return &Sulfuras{item}
+		return &SulfurasItem{item}
 	} else if item.Name == BACKSTAGE_PASS {
-		return &BackstagePass{item}
+		return &BackstagePassItem{item}
 	} else if item.Name == AGED_BRIE {
-		return &AgedBrie{item}
+		return &AgedBrieItem{item}
 	} else if strings.Contains(item.Name, CONJURED_PREFIX) {
 		return &ConjuredItem{item}
 	}

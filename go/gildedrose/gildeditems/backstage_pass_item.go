@@ -1,10 +1,10 @@
 package gildeditems
 
-type BackstagePass struct {
+type BackstagePassItem struct {
 	*Item
 }
 
-func (item *BackstagePass) Update() {
+func (item *BackstagePassItem) Update() {
 	item.incQuality()
 	if item.SellIn <= 10 {
 		item.incQuality()

@@ -79,17 +79,17 @@ func Test_BrieQualityCapsOutAt50(t *testing.T) {
 	assert.Equal(t, 50, items[0].Quality, "Aged Brie should get better as it gets older until it has 50 quality")
 }
 
-// "Sulfuras", being a legendary item, never has to be sold or decreases in Quality
+// "SulfurasItem", being a legendary item, never has to be sold or decreases in Quality
 func Test_SulfuransQualityStaysAt80(t *testing.T) {
 	items := []*gildeditems.Item{
-		{Name: "Sulfuras, Hand of Ragnaros",
+		{Name: "SulfurasItem, Hand of Ragnaros",
 			SellIn:  10,
 			Quality: 80},
 	}
 
 	gildedrose.UpdateQuality(items)
-	assert.Equal(t, 80, items[0].Quality, "Sulfuras should have a quality of 80 always")
-	assert.Equal(t, 10, items[0].SellIn, "sellin should not change for Sulfuras")
+	assert.Equal(t, 80, items[0].Quality, "SulfurasItem should have a quality of 80 always")
+	assert.Equal(t, 10, items[0].SellIn, "sellin should not change for SulfurasItem")
 }
 
 // "Backstage passes", like aged brie, increases in Quality as its SellIn value approaches;
@@ -196,7 +196,7 @@ func Test_MultipleItems(t *testing.T) {
 		{Name: "Backstage passes to a TAFKAL80ETC concert",
 			SellIn:  -1,
 			Quality: 20},
-		{Name: "Sulfuras, Hand of Ragnaros",
+		{Name: "SulfurasItem, Hand of Ragnaros",
 			SellIn:  10,
 			Quality: 80},
 		{Name: "Aged Brie",
@@ -210,8 +210,8 @@ func Test_MultipleItems(t *testing.T) {
 	gildedrose.UpdateQuality(items)
 	assert.Equal(t, 0, items[0].Quality, "Backstage passes should have no quality after the conert")
 
-	assert.Equal(t, 80, items[1].Quality, "Sulfuras should have a quality of 80 always")
-	assert.Equal(t, 10, items[1].SellIn, "sellin should not change for Sulfuras")
+	assert.Equal(t, 80, items[1].Quality, "SulfurasItem should have a quality of 80 always")
+	assert.Equal(t, 10, items[1].SellIn, "sellin should not change for SulfurasItem")
 
 	assert.Equal(t, 50, items[2].Quality, "Aged Brie should get better as it gets older until it has 50 quality")
 	assert.Equal(t, 0, items[2].SellIn, "Aged Brie should have sellin tick down")
@@ -288,7 +288,7 @@ func Test_ManyTicks(t *testing.T) {
 		{Name: "Backstage passes to a TAFKAL80ETC concert",
 			SellIn:  BASE,
 			Quality: 20},
-		{Name: "Sulfuras, Hand of Ragnaros",
+		{Name: "SulfurasItem, Hand of Ragnaros",
 			SellIn:  BASE,
 			Quality: 80},
 		{Name: "Aged Brie",
@@ -305,13 +305,13 @@ func Test_ManyTicks(t *testing.T) {
 			if item.Name != gildeditems.SULFURAS {
 				assert.Equal(t, BASE-i-1, item.SellIn, "All items should have sellin decrement")
 			} else {
-				assert.Equal(t, BASE, item.SellIn, "Sulfuras should not have SellIn decrement")
+				assert.Equal(t, BASE, item.SellIn, "SulfurasItem should not have SellIn decrement")
 			}
 		}
 	}
 
 	assert.Equal(t, 0, items[0].Quality, "Backstage passes should have no quality after the conert")
-	assert.Equal(t, 80, items[1].Quality, "Sulfuras should have a quality of 80 always")
+	assert.Equal(t, 80, items[1].Quality, "SulfurasItem should have a quality of 80 always")
 	assert.Equal(t, 50, items[2].Quality, "Aged Brie should get better as it gets older until it has 50 quality")
 	assert.Equal(t, 0, items[3].Quality, "normal items should have sellin tick down")
 }

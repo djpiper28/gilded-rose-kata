@@ -1,10 +1,10 @@
 package gildeditems
 
-type AgedBrie struct {
+type AgedBrieItem struct {
 	*Item
 }
 
-func (item *AgedBrie) Update() {
+func (item *AgedBrieItem) Update() {
 	item.incQuality()
 	item.SellIn--
 	if item.SellIn < 0 {

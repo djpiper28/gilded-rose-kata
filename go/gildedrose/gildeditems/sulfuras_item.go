@@ -1,9 +1,9 @@
 package gildeditems
 
-type Sulfuras struct {
+type SulfurasItem struct {
 	*Item
 }
 
-func (item *Sulfuras) Update() {
+func (item *SulfurasItem) Update() {
 	// Do nothing
 }
