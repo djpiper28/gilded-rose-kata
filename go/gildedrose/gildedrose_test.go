@@ -266,8 +266,20 @@ func Test_ConjureItemDecayCannotGoBelowZeroEdgeCase(t *testing.T) {
 	}
 
 	gildedrose.UpdateQuality(items)
-	assert.Equal(t, 0, items[0].Quality, "Conjured items should note have negative quality")
+	assert.Equal(t, 0, items[0].Quality, "Conjured items should not have negative quality")
 	assert.Equal(t, 8, items[0].SellIn, "Conjure items should get older")
+}
+
+func Test_ConjureItemDecayTwiceAsFastAfterSellBy(t *testing.T) {
+	items := []*gildeditems.Item{
+		{Name: "Conjured Anchovies",
+			SellIn:  0,
+			Quality: 10},
+	}
+
+	gildedrose.UpdateQuality(items)
+	assert.Equal(t, 6, items[0].Quality, "Conjured items should decay twice as fast as normalitems")
+	assert.Equal(t, -1, items[0].SellIn, "Conjure items should get older")
 }
 
 func Test_ManyTicks(t *testing.T) {
