@@ -33,11 +33,17 @@ type ItemStrategy interface {
 func (item *Item) GetUpdateStrategy() ItemStrategy {
 	if item.Name == SULFURAS {
 		return &SulfurasItem{item}
-	} else if item.Name == BACKSTAGE_PASS {
+	}
+
+	if item.Name == BACKSTAGE_PASS {
 		return &BackstagePassItem{item}
-	} else if item.Name == AGED_BRIE {
+	}
+
+	if item.Name == AGED_BRIE {
 		return &AgedBrieItem{item}
-	} else if strings.Contains(item.Name, CONJURED_PREFIX) {
+	}
+
+	if strings.Contains(item.Name, CONJURED_PREFIX) {
 		return &ConjuredItem{item}
 	}
 	return &StandardItem{item}
