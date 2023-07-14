@@ -6,38 +6,22 @@ public class GildedItemFactory {
     public static GildedItem from(Item item) {
         GildedItem temp = new GildedItem(item.name, item.sellIn, item.quality);
 
-        if (isSulfuras(item.name)) {
+        if (item.name.equals("Sulfuras, Hand of Ragnaros")) {
             return new SulfurasItem(item);
         }
 
-        if (isConjured(item.name)) {
+        if (item.name.contains("Conjured")) {
             return new ConjuredItem(item);
         }
 
-        if (isBackStagePass(item.name)) {
+        if (item.name.equals("Backstage passes to a TAFKAL80ETC concert")) {
             return new BackstagePassItem(item);
         }
 
-        if (isAgedBrie(item.name)) {
+        if (item.name.equals("Aged Brie")) {
             return new AgedBrie(item);
         }
 
         return temp;
-    }
-
-    private static boolean isSulfuras(final String name) {
-        return name.equals("Sulfuras, Hand of Ragnaros");
-    }
-
-    private static boolean isConjured(final String name) {
-        return name.contains("Conjured");
-    }
-
-    private static boolean isBackStagePass(final String name) {
-        return name.equals("Backstage passes to a TAFKAL80ETC concert");
-    }
-
-    private static boolean isAgedBrie(final String name) {
-        return name.equals("Aged Brie");
     }
 }
