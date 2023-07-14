@@ -215,4 +215,14 @@ class GildedRoseTest {
         assertEquals(3, items[0].quality, "The quality should have decreased by 2");
         assertEquals(9, items[0].sellIn, "(sanity check) time should have elapsed");
     }
+
+    @Test
+    void conjuredItemsShouldDecayTwiceAsFastAfterSellByDate() {
+        Item[] items = new Item[] { new Item("Conjured dogbanana", -10, 5) };
+        GildedRose app = new GildedRose(items);
+
+        app.updateQuality();
+        assertEquals(1, items[0].quality, "The quality should have decreased by 2");
+        assertEquals(-11, items[0].sellIn, "(sanity check) time should have elapsed");
+    }
 }
