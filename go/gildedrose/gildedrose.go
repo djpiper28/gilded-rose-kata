@@ -7,7 +7,7 @@ func updateItem(item *gildeditems.Item) {
 }
 
 func UpdateQuality(items []*gildeditems.Item) {
-	for i := 0; i < len(items); i++ {
-		updateItem(items[i])
+	for _, item := range items {
+		updateItem(item)
 	}
 }
