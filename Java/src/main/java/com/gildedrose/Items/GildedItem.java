@@ -17,22 +17,6 @@ public class GildedItem extends Item {
         decrementItemQuality();
     }
 
-    public boolean isSulfuras() {
-        return name.equals("Sulfuras, Hand of Ragnaros");
-    }
-
-    public boolean isConjured() {
-        return name.contains("Conjured");
-    }
-
-    public boolean isBackStagePass() {
-        return name.equals("Backstage passes to a TAFKAL80ETC concert");
-    }
-
-    public boolean isAgedBrie() {
-        return name.equals("Aged Brie");
-    }
-
     protected void updateitemsPostSellInDecrement() {
         if (sellIn >= 0) {
             return;
