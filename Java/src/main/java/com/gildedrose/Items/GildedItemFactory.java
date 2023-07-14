@@ -4,8 +4,6 @@ import com.gildedrose.Item;
 
 public class GildedItemFactory {
     public static GildedItem from(Item item) {
-        GildedItem temp = new GildedItem(item.name, item.sellIn, item.quality);
-
         if (item.name.equals("Sulfuras, Hand of Ragnaros")) {
             return new SulfurasItem(item);
         }
@@ -22,6 +20,6 @@ public class GildedItemFactory {
             return new AgedBrie(item);
         }
 
-        return temp;
+        return new GildedItem(item);
     }
 }

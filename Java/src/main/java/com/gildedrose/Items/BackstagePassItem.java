@@ -4,27 +4,27 @@ import com.gildedrose.Item;
 
 public class BackstagePassItem extends GildedItem {
     public BackstagePassItem(Item item) {
-        super(item.name, item.sellIn, item.quality);
+        super(item);
     }
 
     @Override
     protected void updateItemsPreSellInDecrement() {
         incrementItemQuality();
-        if (sellIn < 11) {
+        if (item.sellIn < 11) {
             incrementItemQuality();
         }
 
-        if (sellIn < 6) {
+        if (item.sellIn < 6) {
             incrementItemQuality();
         }
     }
 
     @Override
     protected void updateitemsPostSellInDecrement() {
-        if (sellIn >= 0) {
+        if (item.sellIn >= 0) {
             return;
         }
 
-        quality = 0;
+        item.quality = 0;
     }
 }

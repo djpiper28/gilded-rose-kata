@@ -4,7 +4,7 @@ import com.gildedrose.Item;
 
 public class AgedBrie extends GildedItem {
     public AgedBrie(Item item) {
-        super(item.name, item.sellIn, item.quality);
+        super(item);
     }
 
     @Override
@@ -14,7 +14,7 @@ public class AgedBrie extends GildedItem {
 
     @Override
     protected void updateitemsPostSellInDecrement() {
-        if (sellIn >= 0) {
+        if (item.sellIn >= 0) {
             return;
         }
 

@@ -11,7 +11,7 @@ class GildedRoseTest {
         Item[] items = new Item[] { new Item("foo", 0, 0) };
         GildedRose app = new GildedRose(items);
         app.updateQuality();
-        assertEquals("foo", app.items[0].name);
+        assertEquals("foo", items[0].name);
     }
 
     @Test
@@ -21,8 +21,8 @@ class GildedRoseTest {
 
         for (int i = 4; i >= 0; i--) {
             app.updateQuality();
-            assertEquals(i, app.items[0].quality, "The item should have one less quality");
-            assertEquals(i, app.items[0].sellIn, "The Item should have one less day on its date");
+            assertEquals(i, items[0].quality, "The item should have one less quality");
+            assertEquals(i, items[0].sellIn, "The Item should have one less day on its date");
         }
     }
 
@@ -32,8 +32,8 @@ class GildedRoseTest {
         GildedRose app = new GildedRose(items);
 
         app.updateQuality();
-        assertEquals(3, app.items[0].quality, "The item should have one less quality");
-        assertEquals(-1, app.items[0].sellIn, "The Item should have one less day on its date");
+        assertEquals(3, items[0].quality, "The item should have one less quality");
+        assertEquals(-1, items[0].sellIn, "The Item should have one less day on its date");
     }
 
     @Test
@@ -42,8 +42,8 @@ class GildedRoseTest {
         GildedRose app = new GildedRose(items);
 
         app.updateQuality();
-        assertEquals(0, app.items[0].quality, "The quality should always be zero or greater");
-        assertEquals(4, app.items[0].sellIn, "Even with no quality left to remove the sellIn should decrement");
+        assertEquals(0, items[0].quality, "The quality should always be zero or greater");
+        assertEquals(4, items[0].sellIn, "Even with no quality left to remove the sellIn should decrement");
     }
 
     @Test
@@ -53,8 +53,8 @@ class GildedRoseTest {
 
         for (int i = 1; i <= 10; i++) {
             app.updateQuality();
-            assertEquals(0, app.items[0].quality, "(sanity check) Items should only have 0 quality here");
-            assertEquals(-i, app.items[0].sellIn, "The Item should have one less day on its date");
+            assertEquals(0, items[0].quality, "(sanity check) Items should only have 0 quality here");
+            assertEquals(-i, items[0].sellIn, "The Item should have one less day on its date");
         }
     }
 
@@ -64,12 +64,12 @@ class GildedRoseTest {
         GildedRose app = new GildedRose(items);
 
         app.updateQuality();
-        assertEquals(2, app.items[0].quality, "The brie should not be getting any worse");
-        assertEquals(1, app.items[0].sellIn, "(sanity check) time should have passed");
+        assertEquals(2, items[0].quality, "The brie should not be getting any worse");
+        assertEquals(1, items[0].sellIn, "(sanity check) time should have passed");
 
         app.updateQuality();
-        assertEquals(0, app.items[0].sellIn, "The brie should now be at the sell by date now");
-        assertEquals(3, app.items[0].quality, "The brie should have started to improve in quality");
+        assertEquals(0, items[0].sellIn, "The brie should now be at the sell by date now");
+        assertEquals(3, items[0].quality, "The brie should have started to improve in quality");
     }
 
     @Test
@@ -78,8 +78,8 @@ class GildedRoseTest {
         GildedRose app = new GildedRose(items);
 
         app.updateQuality();
-        assertEquals(-1, app.items[0].sellIn, "The brie should now be at the sell by date now");
-        assertEquals(3, app.items[0].quality, "The brie should have started to improve in quality twice as fast now");
+        assertEquals(-1, items[0].sellIn, "The brie should now be at the sell by date now");
+        assertEquals(3, items[0].quality, "The brie should have started to improve in quality twice as fast now");
     }
 
     @Test
@@ -88,8 +88,8 @@ class GildedRoseTest {
         GildedRose app = new GildedRose(items);
 
         app.updateQuality();
-        assertEquals(-1, app.items[0].sellIn, "The brie should now be at the sell by date now");
-        assertEquals(50, app.items[0].quality, "The brie should have started to improve in quality twice as fast now");
+        assertEquals(-1, items[0].sellIn, "The brie should now be at the sell by date now");
+        assertEquals(50, items[0].quality, "The brie should have started to improve in quality twice as fast now");
     }
 
     @Test
@@ -98,12 +98,12 @@ class GildedRoseTest {
         GildedRose app = new GildedRose(items);
 
         app.updateQuality();
-        assertEquals(1, app.items[0].sellIn, "(sanity check) time should have passed");
-        assertEquals(50, app.items[0].quality, "The brie should not be getting any worse");
+        assertEquals(1, items[0].sellIn, "(sanity check) time should have passed");
+        assertEquals(50, items[0].quality, "The brie should not be getting any worse");
 
         app.updateQuality();
-        assertEquals(0, app.items[0].sellIn, "The brie should now be at the sell by date now");
-        assertEquals(50, app.items[0].quality, "The brie should have started to improve in quality");
+        assertEquals(0, items[0].sellIn, "The brie should now be at the sell by date now");
+        assertEquals(50, items[0].quality, "The brie should have started to improve in quality");
     }
 
     @Test
@@ -112,8 +112,8 @@ class GildedRoseTest {
         GildedRose app = new GildedRose(items);
 
         app.updateQuality();
-        assertEquals(80, app.items[0].quality, "Sulfuras should have a high and unchanging quality");
-        assertEquals(2, app.items[0].sellIn, "Sulfuras should not get older");
+        assertEquals(80, items[0].quality, "Sulfuras should have a high and unchanging quality");
+        assertEquals(2, items[0].sellIn, "Sulfuras should not get older");
     }
 
     @Test
@@ -122,8 +122,8 @@ class GildedRoseTest {
         GildedRose app = new GildedRose(items);
 
         app.updateQuality();
-        assertEquals(2, app.items[0].quality, "The quality should have impproved by 1");
-        assertEquals(10, app.items[0].sellIn, "(sanity check) the pass should be older");
+        assertEquals(2, items[0].quality, "The quality should have impproved by 1");
+        assertEquals(10, items[0].sellIn, "(sanity check) the pass should be older");
     }
 
     @Test
@@ -132,8 +132,8 @@ class GildedRoseTest {
         GildedRose app = new GildedRose(items);
 
         app.updateQuality();
-        assertEquals(50, app.items[0].quality, "The quality should have impproved by 1");
-        assertEquals(10, app.items[0].sellIn, "(sanity check) the pass should be older");
+        assertEquals(50, items[0].quality, "The quality should have impproved by 1");
+        assertEquals(10, items[0].sellIn, "(sanity check) the pass should be older");
     }
 
     @Test
@@ -142,8 +142,8 @@ class GildedRoseTest {
         GildedRose app = new GildedRose(items);
 
         app.updateQuality();
-        assertEquals(3, app.items[0].quality, "The quality should have impproved by 2");
-        assertEquals(9, app.items[0].sellIn, "(sanity check) the pass should be older");
+        assertEquals(3, items[0].quality, "The quality should have impproved by 2");
+        assertEquals(9, items[0].sellIn, "(sanity check) the pass should be older");
     }
 
     @Test
@@ -152,8 +152,8 @@ class GildedRoseTest {
         GildedRose app = new GildedRose(items);
 
         app.updateQuality();
-        assertEquals(3, app.items[0].quality, "The quality should have impproved by 2");
-        assertEquals(5, app.items[0].sellIn, "(sanity check) the pass should be older");
+        assertEquals(3, items[0].quality, "The quality should have impproved by 2");
+        assertEquals(5, items[0].sellIn, "(sanity check) the pass should be older");
     }
 
     @Test
@@ -162,8 +162,8 @@ class GildedRoseTest {
         GildedRose app = new GildedRose(items);
 
         app.updateQuality();
-        assertEquals(50, app.items[0].quality, "The quality should have impproved by 2");
-        assertEquals(5, app.items[0].sellIn, "(sanity check) the pass should be older");
+        assertEquals(50, items[0].quality, "The quality should have impproved by 2");
+        assertEquals(5, items[0].sellIn, "(sanity check) the pass should be older");
     }
 
     @Test
@@ -172,8 +172,8 @@ class GildedRoseTest {
         GildedRose app = new GildedRose(items);
 
         app.updateQuality();
-        assertEquals(4, app.items[0].quality, "The quality should have impproved by 3");
-        assertEquals(4, app.items[0].sellIn, "(sanity check) the pass should be older");
+        assertEquals(4, items[0].quality, "The quality should have impproved by 3");
+        assertEquals(4, items[0].sellIn, "(sanity check) the pass should be older");
     }
 
     @Test
@@ -182,8 +182,8 @@ class GildedRoseTest {
         GildedRose app = new GildedRose(items);
 
         app.updateQuality();
-        assertEquals(50, app.items[0].quality, "The quality should have impproved by 3");
-        assertEquals(4, app.items[0].sellIn, "(sanity check) the pass should be older");
+        assertEquals(50, items[0].quality, "The quality should have impproved by 3");
+        assertEquals(4, items[0].sellIn, "(sanity check) the pass should be older");
     }
 
     @Test
@@ -192,8 +192,8 @@ class GildedRoseTest {
         GildedRose app = new GildedRose(items);
 
         app.updateQuality();
-        assertEquals(0, app.items[0].quality, "The quality should have become zero");
-        assertEquals(-1, app.items[0].sellIn, "(sanity check) the pass should be older");
+        assertEquals(0, items[0].quality, "The quality should have become zero");
+        assertEquals(-1, items[0].sellIn, "(sanity check) the pass should be older");
     }
 
     @Test
@@ -202,8 +202,8 @@ class GildedRoseTest {
         GildedRose app = new GildedRose(items);
 
         app.updateQuality();
-        assertEquals(0, app.items[0].quality, "The quality should have become zero");
-        assertEquals(-2, app.items[0].sellIn, "(sanity check) the pass should be older");
+        assertEquals(0, items[0].quality, "The quality should have become zero");
+        assertEquals(-2, items[0].sellIn, "(sanity check) the pass should be older");
     }
 
     @Test
@@ -212,7 +212,7 @@ class GildedRoseTest {
         GildedRose app = new GildedRose(items);
 
         app.updateQuality();
-        assertEquals(3, app.items[0].quality, "The quality should have decreased by 2");
-        assertEquals(9, app.items[0].sellIn, "(sanity check) time should have elapsed");
+        assertEquals(3, items[0].quality, "The quality should have decreased by 2");
+        assertEquals(9, items[0].sellIn, "(sanity check) time should have elapsed");
     }
 }

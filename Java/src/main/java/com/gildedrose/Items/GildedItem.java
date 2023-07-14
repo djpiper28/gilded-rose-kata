@@ -2,14 +2,16 @@ package com.gildedrose.Items;
 
 import com.gildedrose.Item;
 
-public class GildedItem extends Item {
-    public GildedItem(String name, int sellIn, int quality) {
-        super(name, sellIn, quality);
+public class GildedItem {
+    protected Item item;
+
+    public GildedItem(final Item item) {
+        this.item = item;
     }
 
     public void updateItemQuality() {
         updateItemsPreSellInDecrement();
-        sellIn--;
+        item.sellIn--;
         updateitemsPostSellInDecrement();
     }
 
@@ -18,7 +20,7 @@ public class GildedItem extends Item {
     }
 
     protected void updateitemsPostSellInDecrement() {
-        if (sellIn >= 0) {
+        if (item.sellIn >= 0) {
             return;
         }
 
@@ -26,14 +28,14 @@ public class GildedItem extends Item {
     }
 
     protected void decrementItemQuality() {
-        if (quality > 0) {
-            quality--;
+        if (item.quality > 0) {
+            item.quality--;
         }
     }
 
     protected void incrementItemQuality() {
-        if (quality < 50) {
-            quality++;
+        if (item.quality < 50) {
+            item.quality++;
         }
     }
 }
