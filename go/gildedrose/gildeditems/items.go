@@ -27,10 +27,10 @@ func (item *Item) decQuality() {
 }
 
 type ItemStrategy interface {
-	DoItemUpdate()
+	Update()
 }
 
-func (item *Item) DoItemUpdate() {
+func (item *Item) Update() {
 	item.decQuality()
 	item.SellIn--
 	if item.SellIn < 0 {

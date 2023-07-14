@@ -4,7 +4,7 @@ type BackstagePass struct {
 	*Item
 }
 
-func (item *BackstagePass) DoItemUpdate() {
+func (item *BackstagePass) Update() {
 	item.incQuality()
 	if item.SellIn <= 10 {
 		item.incQuality()

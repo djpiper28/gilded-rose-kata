@@ -4,7 +4,7 @@ type ConjuredItem struct {
 	*Item
 }
 
-func (item *ConjuredItem) DoItemUpdate() {
+func (item *ConjuredItem) Update() {
 	item.decQuality()
 	item.decQuality()
 	item.SellIn--

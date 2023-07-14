@@ -4,7 +4,7 @@ type AgedBrie struct {
 	*Item
 }
 
-func (item *AgedBrie) DoItemUpdate() {
+func (item *AgedBrie) Update() {
 	item.incQuality()
 	item.SellIn--
 	if item.SellIn < 0 {
