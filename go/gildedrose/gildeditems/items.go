@@ -1,4 +1,4 @@
-package gildedrose
+package gildeditems
 
 import "strings"
 
@@ -27,10 +27,10 @@ func (item *Item) decQuality() {
 }
 
 type ItemStrategy interface {
-	itemUpdateStrategy()
+	DoItemUpdate()
 }
 
-func (item *Item) itemUpdateStrategy() {
+func (item *Item) DoItemUpdate() {
 	item.decQuality()
 	item.SellIn--
 	if item.SellIn < 0 {
@@ -38,7 +38,7 @@ func (item *Item) itemUpdateStrategy() {
 	}
 }
 
-func (item *Item) getItemStrategy() ItemStrategy {
+func (item *Item) GetItemStrategy() ItemStrategy {
 	if item.Name == SULFURAS {
 		return &Sulfuras{item}
 	} else if item.Name == BACKSTAGE_PASS {

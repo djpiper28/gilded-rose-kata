@@ -1,6 +1,7 @@
 package gildedrose_test
 
 import (
+	"github.com/emilybache/gildedrose-refactoring-kata/gildedrose/gildeditems"
 	"testing"
 
 	"github.com/emilybache/gildedrose-refactoring-kata/gildedrose"
@@ -8,7 +9,7 @@ import (
 )
 
 func Test_Foo(t *testing.T) {
-	items := []*gildedrose.Item{
+	items := []*gildeditems.Item{
 		{"foo", 0, 0},
 	}
 
@@ -20,7 +21,7 @@ func Test_Foo(t *testing.T) {
 // Once the sell by date has passed, Quality degrades twice as fast
 func Test_SellByDatePassed(t *testing.T) {
 	const Q = 4
-	items := []*gildedrose.Item{
+	items := []*gildeditems.Item{
 		{Name: "Out of date item",
 			SellIn:  0,
 			Quality: Q},
@@ -33,7 +34,7 @@ func Test_SellByDatePassed(t *testing.T) {
 
 // The Quality of an item is never negative
 func Test_NegativeQualityOnTick(t *testing.T) {
-	items := []*gildedrose.Item{
+	items := []*gildeditems.Item{
 		{Name: "Really rotten tomatoes",
 			SellIn:  4,
 			Quality: 0},
@@ -44,7 +45,7 @@ func Test_NegativeQualityOnTick(t *testing.T) {
 }
 
 func Test_NegativeQualityOnDoubleTick(t *testing.T) {
-	items := []*gildedrose.Item{
+	items := []*gildeditems.Item{
 		{Name: "Out of date item",
 			SellIn:  0,
 			Quality: 0},
@@ -56,7 +57,7 @@ func Test_NegativeQualityOnDoubleTick(t *testing.T) {
 
 // "Aged Brie" actually increases in Quality the older it gets
 func Test_BrieQualityGetsOlder(t *testing.T) {
-	items := []*gildedrose.Item{
+	items := []*gildeditems.Item{
 		{Name: "Aged Brie",
 			SellIn:  0,
 			Quality: 0},
@@ -68,7 +69,7 @@ func Test_BrieQualityGetsOlder(t *testing.T) {
 
 // The Quality of an item is never more than 50
 func Test_BrieQualityCapsOutAt50(t *testing.T) {
-	items := []*gildedrose.Item{
+	items := []*gildeditems.Item{
 		{Name: "Aged Brie",
 			SellIn:  0,
 			Quality: 50},
@@ -80,7 +81,7 @@ func Test_BrieQualityCapsOutAt50(t *testing.T) {
 
 // "Sulfuras", being a legendary item, never has to be sold or decreases in Quality
 func Test_SulfuransQualityStaysAt80(t *testing.T) {
-	items := []*gildedrose.Item{
+	items := []*gildeditems.Item{
 		{Name: "Sulfuras, Hand of Ragnaros",
 			SellIn:  10,
 			Quality: 80},
@@ -92,10 +93,11 @@ func Test_SulfuransQualityStaysAt80(t *testing.T) {
 }
 
 // "Backstage passes", like aged brie, increases in Quality as its SellIn value approaches;
+//
 //	Quality increases by 2 when there are 10 days or less and by 3 when there are 5 days or less but
 //	Quality drops to 0 after the concert
 func Test_BackstagePassQualityIncreasesFarOut(t *testing.T) {
-	items := []*gildedrose.Item{
+	items := []*gildeditems.Item{
 		{Name: "Backstage passes to a TAFKAL80ETC concert",
 			SellIn:  180,
 			Quality: 20},
@@ -107,7 +109,7 @@ func Test_BackstagePassQualityIncreasesFarOut(t *testing.T) {
 }
 
 func Test_BackstagePassQualityIncreases10Days(t *testing.T) {
-	items := []*gildedrose.Item{
+	items := []*gildeditems.Item{
 		{Name: "Backstage passes to a TAFKAL80ETC concert",
 			SellIn:  10,
 			Quality: 20},
@@ -119,7 +121,7 @@ func Test_BackstagePassQualityIncreases10Days(t *testing.T) {
 }
 
 func Test_BackstagePassQualityIncreases9Days(t *testing.T) {
-	items := []*gildedrose.Item{
+	items := []*gildeditems.Item{
 		{Name: "Backstage passes to a TAFKAL80ETC concert",
 			SellIn:  9,
 			Quality: 20},
@@ -131,7 +133,7 @@ func Test_BackstagePassQualityIncreases9Days(t *testing.T) {
 }
 
 func Test_BackstagePassQualityIncreases5Days(t *testing.T) {
-	items := []*gildedrose.Item{
+	items := []*gildeditems.Item{
 		{Name: "Backstage passes to a TAFKAL80ETC concert",
 			SellIn:  5,
 			Quality: 20},
@@ -143,7 +145,7 @@ func Test_BackstagePassQualityIncreases5Days(t *testing.T) {
 }
 
 func Test_BackstagePassQualityIncreases4Days(t *testing.T) {
-	items := []*gildedrose.Item{
+	items := []*gildeditems.Item{
 		{Name: "Backstage passes to a TAFKAL80ETC concert",
 			SellIn:  4,
 			Quality: 20},
@@ -155,7 +157,7 @@ func Test_BackstagePassQualityIncreases4Days(t *testing.T) {
 }
 
 func Test_BackstagePassQualityIncreases1Days(t *testing.T) {
-	items := []*gildedrose.Item{
+	items := []*gildeditems.Item{
 		{Name: "Backstage passes to a TAFKAL80ETC concert",
 			SellIn:  1,
 			Quality: 20},
@@ -167,7 +169,7 @@ func Test_BackstagePassQualityIncreases1Days(t *testing.T) {
 }
 
 func Test_BackstagePassQualityIncreases0Days(t *testing.T) {
-	items := []*gildedrose.Item{
+	items := []*gildeditems.Item{
 		{Name: "Backstage passes to a TAFKAL80ETC concert",
 			SellIn:  0,
 			Quality: 20},
@@ -179,7 +181,7 @@ func Test_BackstagePassQualityIncreases0Days(t *testing.T) {
 }
 
 func Test_BackstagePassQualityIncreasesAfterConcertDays(t *testing.T) {
-	items := []*gildedrose.Item{
+	items := []*gildeditems.Item{
 		{Name: "Backstage passes to a TAFKAL80ETC concert",
 			SellIn:  -1,
 			Quality: 20},
@@ -190,7 +192,7 @@ func Test_BackstagePassQualityIncreasesAfterConcertDays(t *testing.T) {
 }
 
 func Test_MultipleItems(t *testing.T) {
-	items := []*gildedrose.Item{
+	items := []*gildeditems.Item{
 		{Name: "Backstage passes to a TAFKAL80ETC concert",
 			SellIn:  -1,
 			Quality: 20},
@@ -219,9 +221,9 @@ func Test_MultipleItems(t *testing.T) {
 }
 
 // We have recently signed a supplier of conjured items. This requires an update to our system:
-// 	- "Conjured" items degrade in Quality twice as fast as normal items
+//   - "Conjured" items degrade in Quality twice as fast as normal items
 func Test_ConjureItemDecay(t *testing.T) {
-	items := []*gildedrose.Item{
+	items := []*gildeditems.Item{
 		{Name: "Conjured Anchovies",
 			SellIn:  9,
 			Quality: 20},
@@ -233,7 +235,7 @@ func Test_ConjureItemDecay(t *testing.T) {
 }
 
 func Test_ConjureItemDecayCanDecayToZero(t *testing.T) {
-	items := []*gildedrose.Item{
+	items := []*gildeditems.Item{
 		{Name: "Conjured Anchovies",
 			SellIn:  9,
 			Quality: 2},
@@ -245,7 +247,7 @@ func Test_ConjureItemDecayCanDecayToZero(t *testing.T) {
 }
 
 func Test_ConjureItemDecayCannotGoBelowZero(t *testing.T) {
-	items := []*gildedrose.Item{
+	items := []*gildeditems.Item{
 		{Name: "Conjured Anchovies",
 			SellIn:  9,
 			Quality: 0},
@@ -257,7 +259,7 @@ func Test_ConjureItemDecayCannotGoBelowZero(t *testing.T) {
 }
 
 func Test_ConjureItemDecayCannotGoBelowZeroEdgeCase(t *testing.T) {
-	items := []*gildedrose.Item{
+	items := []*gildeditems.Item{
 		{Name: "Conjured Anchovies",
 			SellIn:  9,
 			Quality: 1},
@@ -270,7 +272,7 @@ func Test_ConjureItemDecayCannotGoBelowZeroEdgeCase(t *testing.T) {
 
 func Test_ManyTicks(t *testing.T) {
 	const BASE = 100
-	items := []*gildedrose.Item{
+	items := []*gildeditems.Item{
 		{Name: "Backstage passes to a TAFKAL80ETC concert",
 			SellIn:  BASE,
 			Quality: 20},
@@ -288,7 +290,7 @@ func Test_ManyTicks(t *testing.T) {
 	for i := 0; i < 12000; i++ {
 		gildedrose.UpdateQuality(items)
 		for _, item := range items {
-			if item.Name != gildedrose.SULFURAS {
+			if item.Name != gildeditems.SULFURAS {
 				assert.Equal(t, BASE-i-1, item.SellIn, "All items should have sellin decrement")
 			} else {
 				assert.Equal(t, BASE, item.SellIn, "Sulfuras should not have SellIn decrement")

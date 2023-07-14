@@ -1,10 +1,10 @@
-package gildedrose
+package gildeditems
 
 type ConjuredItem struct {
 	*Item
 }
 
-func (item *ConjuredItem) itemUpdateStrategy() {
+func (item *ConjuredItem) DoItemUpdate() {
 	item.decQuality()
 	item.decQuality()
 	item.SellIn--

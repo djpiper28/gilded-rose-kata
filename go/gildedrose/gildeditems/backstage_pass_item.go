@@ -1,10 +1,10 @@
-package gildedrose
+package gildeditems
 
 type BackstagePass struct {
 	*Item
 }
 
-func (item *BackstagePass) itemUpdateStrategy() {
+func (item *BackstagePass) DoItemUpdate() {
 	item.incQuality()
 	if item.SellIn <= 10 {
 		item.incQuality()
