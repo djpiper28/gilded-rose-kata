@@ -4,7 +4,7 @@ import com.gildedrose.Items.GildedItem;
 import com.gildedrose.Items.GildedItemFactory;
 
 class GildedRose {
-    GildedItem[] items;
+    final GildedItem[] items;
 
     public GildedRose(Item[] items) {
         this.items = new GildedItem[items.length];
@@ -14,7 +14,7 @@ class GildedRose {
     }
 
     public void updateQuality() {
-        for (int i = 0; i < items.length; i++) items[i].updateItemQuality();
+        for (final GildedItem item : items) item.updateItemQuality();
     }
 
 }
