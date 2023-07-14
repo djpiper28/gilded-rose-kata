@@ -38,58 +38,6 @@ func (item *Item) itemUpdateStrategy() {
 	}
 }
 
-type Sulfuras struct {
-	*Item
-}
-
-func (item *Sulfuras) itemUpdateStrategy() {
-	// Do nothing
-}
-
-type AgedBrie struct {
-	*Item
-}
-
-func (item *AgedBrie) itemUpdateStrategy() {
-	item.incQuality()
-	item.SellIn--
-	if item.SellIn < 0 {
-		item.incQuality()
-	}
-}
-
-type BackstagePass struct {
-	*Item
-}
-
-func (item *BackstagePass) itemUpdateStrategy() {
-	item.incQuality()
-	if item.SellIn <= 10 {
-		item.incQuality()
-	}
-
-	if item.SellIn <= 5 {
-		item.incQuality()
-	}
-	item.SellIn--
-	if item.SellIn < 0 {
-		item.Quality = 0
-	}
-}
-
-type ConjuredItem struct {
-	*Item
-}
-
-func (item *ConjuredItem) itemUpdateStrategy() {
-	item.decQuality()
-	item.decQuality()
-	item.SellIn--
-	if item.SellIn < 0 {
-		item.decQuality()
-	}
-}
-
 func (item *Item) getItemStrategy() ItemStrategy {
 	if item.Name == SULFURAS {
 		return &Sulfuras{item}
