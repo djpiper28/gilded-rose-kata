@@ -21,10 +21,8 @@ public class BackstagePassItem extends GildedItem {
 
     @Override
     protected void updateitemsPostSellInDecrement() {
-        if (item.sellIn >= 0) {
-            return;
+        if (item.sellIn < 0) {
+            item.quality = 0;
         }
-
-        item.quality = 0;
     }
 }

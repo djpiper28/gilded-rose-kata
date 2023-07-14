@@ -20,11 +20,9 @@ public class GildedItem {
     }
 
     protected void updateitemsPostSellInDecrement() {
-        if (item.sellIn >= 0) {
-            return;
+        if (item.sellIn < 0) {
+            decrementItemQuality();
         }
-
-        decrementItemQuality();
     }
 
     protected final void decrementItemQuality() {
