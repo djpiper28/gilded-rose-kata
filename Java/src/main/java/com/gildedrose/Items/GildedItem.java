@@ -27,13 +27,13 @@ public class GildedItem {
         decrementItemQuality();
     }
 
-    protected void decrementItemQuality() {
+    protected final void decrementItemQuality() {
         if (item.quality > 0) {
             item.quality--;
         }
     }
 
-    protected void incrementItemQuality() {
+    protected final void incrementItemQuality() {
         if (item.quality < 50) {
             item.quality++;
         }
