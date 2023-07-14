@@ -30,7 +30,7 @@ type ItemStrategy interface {
 	Update()
 }
 
-func (item *Item) GetItemStrategy() ItemStrategy {
+func (item *Item) GetUpdateStrategy() ItemStrategy {
 	if item.Name == SULFURAS {
 		return &SulfurasItem{item}
 	} else if item.Name == BACKSTAGE_PASS {
