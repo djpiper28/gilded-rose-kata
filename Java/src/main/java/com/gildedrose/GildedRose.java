@@ -3,13 +3,15 @@ package com.gildedrose;
 import com.gildedrose.Items.GildedItem;
 import com.gildedrose.Items.GildedItemFactory;
 
+import java.util.LinkedList;
+import java.util.List;
+
 class GildedRose {
-    final GildedItem[] items;
+    final private List<GildedItem> items = new LinkedList<>();
 
     public GildedRose(Item[] items) {
-        this.items = new GildedItem[items.length];
-        for (int i = 0; i < items.length; i++) {
-            this.items[i] = GildedItemFactory.from(items[i]);
+        for (final Item item : items) {
+            this.items.add(GildedItemFactory.from(item));
         }
     }
 
