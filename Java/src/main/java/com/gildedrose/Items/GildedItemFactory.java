@@ -1,6 +1,7 @@
 package com.gildedrose.Items;
 
 import com.gildedrose.Item;
+import com.gildedrose.Items.Concrete.*;
 
 public class GildedItemFactory {
     public static GildedItem from(Item item) {
