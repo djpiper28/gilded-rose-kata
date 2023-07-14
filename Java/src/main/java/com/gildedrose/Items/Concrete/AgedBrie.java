@@ -12,7 +12,7 @@ public class AgedBrie extends GildedItem {
     public void updateItemQuality() {
         incrementItemQuality();
         item.sellIn--;
-        if (item.sellIn < 0) {
+        if (isItemOutOfDate()) {
             incrementItemQuality();
         }
     }

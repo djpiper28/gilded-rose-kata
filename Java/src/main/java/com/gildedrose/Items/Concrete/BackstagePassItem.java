@@ -21,7 +21,7 @@ public class BackstagePassItem extends GildedItem {
 
         item.sellIn--;
 
-        if (item.sellIn < 0) {
+        if (isItemOutOfDate()) {
             item.quality = 0;
         }
     }

@@ -12,7 +12,7 @@ public class StandardItem extends GildedItem {
     public void updateItemQuality() {
         decrementItemQuality();
         item.sellIn--;
-        if (item.sellIn < 0) {
+        if (isItemOutOfDate()) {
             decrementItemQuality();
         }
     }

@@ -22,4 +22,8 @@ public abstract class GildedItem {
             item.quality++;
         }
     }
+
+    protected final boolean isItemOutOfDate() {
+        return item.sellIn < 0;
+    }
 }
