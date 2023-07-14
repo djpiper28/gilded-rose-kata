@@ -30,14 +30,6 @@ type ItemStrategy interface {
 	Update()
 }
 
-func (item *Item) Update() {
-	item.decQuality()
-	item.SellIn--
-	if item.SellIn < 0 {
-		item.decQuality()
-	}
-}
-
 func (item *Item) GetItemStrategy() ItemStrategy {
 	if item.Name == SULFURAS {
 		return &Sulfuras{item}
@@ -48,5 +40,5 @@ func (item *Item) GetItemStrategy() ItemStrategy {
 	} else if strings.Contains(item.Name, CONJURED_PREFIX) {
 		return &ConjuredItem{item}
 	}
-	return item
+	return &StandardItem{item}
 }
