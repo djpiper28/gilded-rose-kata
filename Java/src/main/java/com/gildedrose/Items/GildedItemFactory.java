@@ -20,6 +20,6 @@ public class GildedItemFactory {
             return new AgedBrie(item);
         }
 
-        return new GildedItem(item);
+        return new StandardItem(item);
     }
 }

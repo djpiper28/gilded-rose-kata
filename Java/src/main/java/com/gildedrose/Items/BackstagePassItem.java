@@ -8,7 +8,7 @@ public class BackstagePassItem extends GildedItem {
     }
 
     @Override
-    protected void updateItemsPreSellInDecrement() {
+    public void updateItemQuality() {
         incrementItemQuality();
         if (item.sellIn < 11) {
             incrementItemQuality();
@@ -17,10 +17,9 @@ public class BackstagePassItem extends GildedItem {
         if (item.sellIn < 6) {
             incrementItemQuality();
         }
-    }
 
-    @Override
-    protected void updateitemsPostSellInDecrement() {
+        item.sellIn--;
+
         if (item.sellIn < 0) {
             item.quality = 0;
         }

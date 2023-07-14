@@ -8,12 +8,9 @@ public class AgedBrie extends GildedItem {
     }
 
     @Override
-    protected void updateItemsPreSellInDecrement() {
+    public void updateItemQuality() {
         incrementItemQuality();
-    }
-
-    @Override
-    protected void updateitemsPostSellInDecrement() {
+        item.sellIn--;
         if (item.sellIn < 0) {
             incrementItemQuality();
         }
