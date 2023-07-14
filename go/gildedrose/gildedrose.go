@@ -1,13 +1,7 @@
 package gildedrose
 
 func (item *Item) updateItem() {
-	if item.Name == SULFURAS {
-		return
-	}
-
-	item.updateItemQualityPreSellInDec()
-	item.SellIn--
-	item.updateItemQualityPostSellInDec()
+	item.getItemStrategy().itemUpdateStrategy()
 }
 
 func UpdateQuality(items []*Item) {
